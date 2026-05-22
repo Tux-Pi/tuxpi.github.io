@@ -3,60 +3,43 @@ title: TuxPi
 toc: false
 ---
 
+<div style="
+  position: relative;
+  text-align: center;
+  margin-bottom: 40px;
+">
+
+<img src="/images/banner.jpg" style="
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: brightness(0.6);
+">
+
+<div style="
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 0 2px 10px black;
+">
+
 # TuxPi
 
-Self-hosting • Linux • Hardware • IoT • Retro Computing
+Self-hosting • Linux • IoT • Hardware
 
-
-{{< hero >}}
-  {{< figure src="/images/ChatGPT Image 21 dic 2025, 11_52_37.png" alt="Background" >}}
-
-  # TuxPi
-
-  Self-hosting • Linux • IoT • Hardware
-
-  Benvenuto nel mio sito tecnico.
-{{< /hero >}}
+</div>
+</div>
 
 ---
 
-Benvenuto nel mio spazio personale.
-
-Qui trovi progetti, appunti tecnici, esperimenti e documentazione su server, embedded systems e sviluppo.
-
----
-
-## Esplora il sito
+## Esplora
 
 {{< cards cols="2" >}}
-  {{< card link="/docs" title="Documentazione" subtitle="Guide Linux, server, configurazioni e appunti tecnici" >}}
-  {{< card link="/blog" title="Blog" subtitle="Aggiornamenti, riflessioni e articoli" >}}
-  {{< card link="/projects" title="Progetti" subtitle="ESP32, Raspberry Pi, IoT e hardware" >}}
-  {{< card link="/about" title="About" subtitle="Chi sono e cosa faccio" >}}
+  {{< card link="/docs" title="Documentazione" subtitle="Guide Linux e server" >}}
+  {{< card link="/blog" title="Blog" subtitle="Articoli e aggiornamenti" >}}
+  {{< card link="/projects" title="Progetti" subtitle="ESP32, Raspberry Pi, IoT" >}}
+  {{< card link="/about" title="About" subtitle="Chi sono" >}}
 {{< /cards >}}
-
----
-
-## Progetti in evidenza
-
-{{< cards cols="3" >}}
-  {{< card link="/projects/weather-station" title="Weather Station" subtitle="Stazione meteo con sensori e dashboard" >}}
-  {{< card link="/projects/home-server" title="Home Server" subtitle="Server Linux self-hosted" >}}
-  {{< card link="/docs/linux" title="Linux Notes" subtitle="Comandi, configurazioni e troubleshooting" >}}
-{{< /cards >}}
-
----
-
-## Obiettivo del progetto
-
-Questo sito è una raccolta personale di:
-
-- esperimenti hardware
-- sistemi self-hosted
-- networking e Linux
-- automazione e IoT
-- documentazione tecnica
-
----
-
-> Powered by Hugo + Hextra + GitHub Pages
