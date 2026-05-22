@@ -7,6 +7,17 @@ toc: false
 
 Self-hosting • Linux • Hardware • IoT • Retro Computing
 
+
+{{< hero >}}
+  {{< figure src="/images/ChatGPT Image 21 dic 2025, 11_52_37.png" alt="Background" >}}
+
+  # TuxPi
+
+  Self-hosting • Linux • IoT • Hardware
+
+  Benvenuto nel mio sito tecnico.
+{{< /hero >}}
+
 ---
 
 Benvenuto nel mio spazio personale.
