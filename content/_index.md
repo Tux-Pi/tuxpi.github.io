@@ -19,10 +19,10 @@ Open Source • Minimal • Fast
 ## Sezioni
 
 {{< cards cols="2" >}}
-  {{< card link="/docs" title="Documentazione" subtitle="Guide, Linux e tutorial" icon="book-open" >}}
-  {{< card link="/blog" title="Blog" subtitle="Post e aggiornamenti" icon="newspaper" >}}
-  {{< card link="/projects" title="Progetti" subtitle="ESP32, Raspberry Pi, hardware e coding" icon="cpu" >}}
-  {{< card link="/about" title="About" subtitle="Chi sono e cosa faccio" icon="user" >}}
+  {{< card link="/docs" title="Documentazione" subtitle="Guide e appunti tecnici" icon="book-open" >}}
+  {{< card link="/blog" title="Blog" subtitle="Aggiornamenti e post" icon="newspaper" >}}
+  {{< card link="/projects" title="Progetti" subtitle="ESP32, Raspberry Pi e hardware" icon="folder" >}}
+  {{< card link="/about" title="About" subtitle="Chi sono" icon="user" >}}
 {{< /cards >}}
 
 ---
