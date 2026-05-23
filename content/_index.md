@@ -11,9 +11,9 @@ Troverai articoli di approfondimento, guide pratiche e recensioni su distribuzio
 L’obiettivo è diffondere la cultura Linux e del software libero, aiutando utenti di ogni livello a scoprire un modo più libero, sicuro e personalizzabile di vivere la tecnologia.
 
 {{< cards >}}
-  {{< card link="/blog/" title="Leggi gli Articoli" icon="newspaper" >}}
-  {{< card link="/docs/proxmox/" title="Proxmox Homelab" icon="server" >}}
-  {{< card link="/docs/raspberry-pi/" title="Mondo Raspberry" icon="cpu-chip" >}}
+  {{< card link="/blog/" title="Leggi gli Articoli" icon="book-open" >}}
+  {{< card link="/docs/proxmox/" title="Proxmox Homelab" icon="cog" >}}
+  {{< card link="/docs/raspberry-pi/" title="Mondo Raspberry" icon="terminal" >}}
 {{< /cards >}}
 
 ---
