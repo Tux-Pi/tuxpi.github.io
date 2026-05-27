@@ -19,7 +19,7 @@
 </div>
 
 <style>
-/* RIMUOVE MARGINI E RENDE TUTTO GIGANTE */
+/* 1. SETUP CONTENITORE GIGANTE */
 .main-slider-container {
     position: relative;
     width: 100vw;
@@ -33,7 +33,7 @@
     background: black;
 }
 
-/* LOGICA SLIDER */
+/* 2. LOGICA SLIDER IMMAGINI (Ciclo 15s) */
 .slide {
     position: absolute;
     width: 100%;
@@ -44,17 +44,35 @@
     transition: opacity 1.5s ease-in-out;
 }
 
-/* Animazione automatica delle slide (3 immagini) */
-.slide:nth-child(1) { animation: cycle 15s infinite; }
-.slide:nth-child(2) { animation: cycle 15s infinite 5s; }
-.slide:nth-child(3) { animation: cycle 15s infinite 10s; }
+/* Sincronizzazione: 3 immagini x 5 secondi = 15s totale */
+.slide:nth-child(1) { animation: cycleImages 15s infinite; }
+.slide:nth-child(2) { animation: cycleImages 15s infinite 5s; }
+.slide:nth-child(3) { animation: cycleImages 15s infinite 10s; }
 
-@keyframes cycle {
-    0%, 33% { opacity: 1; }
-    40%, 100% { opacity: 0; }
+@keyframes cycleImages {
+    0%, 33.33% { opacity: 1; }  /* Visibile per i primi 5s */
+    40%, 100% { opacity: 0; }   /* Sfuma e sparisce */
 }
 
-/* CONTENUTO CENTRALE */
+/* 3. LOGICA SCRITTA ANIMATA (Sincronizzata 15s) */
+.typing::after {
+    content: "";
+    /* Sincronizzato con il ciclo totale delle immagini */
+    animation: typeSync 15s infinite; 
+}
+
+@keyframes typeSync {
+    /* Corrisponde alla Slide 1 (0-5s) */
+    0%, 33.32% { content: "Linux & Raspberry Pi"; } 
+    
+    /* Corrisponde alla Slide 2 (5-10s) */
+    33.33%, 66.65% { content: "Proxmox Homelab"; } 
+    
+    /* Corrisponde alla Slide 3 (10-15s) */
+    66.66%, 100% { content: "Virtualizzazione & Libertà"; }
+}
+
+/* 4. ESTETICA E PULIZIA */
 .slider-overlay-content {
     position: relative;
     z-index: 10;
@@ -67,14 +85,6 @@
     padding: 0 20px;
 }
 
-.hero-badge {
-    color: #3b82f6;
-    letter-spacing: 4px;
-    font-weight: 800;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
 .hero-title {
     font-size: clamp(5rem, 18vw, 12rem) !important;
     font-weight: 900 !important;
@@ -83,40 +93,19 @@
     margin: 0 !important;
     letter-spacing: -6px;
 }
-
 .hero-title span { color: #3b82f6; }
 
 .hero-subtitle {
     font-family: 'Courier New', monospace;
-    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
     color: #e2e8f0;
     margin-top: 2rem;
 }
 
-/* EFFETTO SCRITTURA */
-.typing::after {
-    content: "";
-    animation: type 12s infinite;
-}
-
-@keyframes type {
-    0%, 25% { content: "Linux & Raspberry Pi"; }
-    26%, 50% { content: "Proxmox Homelab"; }
-    51%, 75% { content: "Virtualizzazione"; }
-    76%, 100% { content: "Libertà Digitale"; }
-}
-
-.cursor { animation: blink 0.8s infinite; color: #3b82f6; }
+.cursor { animation: blink 0.8s infinite; color: #3b82f6; font-weight: bold; }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* BOTTONI */
-.hero-buttons {
-    margin-top: 4rem;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+.hero-buttons { margin-top: 4rem; display: flex; gap: 20px; justify-content: center; }
 
 .btn {
     padding: 18px 45px;
@@ -125,16 +114,13 @@
     text-decoration: none;
     transition: 0.3s;
     text-transform: uppercase;
-    font-size: 0.9rem;
 }
-
 .btn-blue { background: #3b82f6; color: white; }
 .btn-outline { border: 2px solid white; color: white; }
 .btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
 
-/* NASCONDE ELEMENTI STRANI DI HEXTRA NELLA HOME */
-header + main .hextra-breadcrumb, 
-header + main h1:first-of-type {
+/* NASCONDE ELEMENTI DI DEFAULT DEL TEMA NELLA HOME */
+.hextra-breadcrumb, .hm-4, .next-link, .prev-link, .mt-16, .mb-16 {
     display: none !important;
 }
 </style>
