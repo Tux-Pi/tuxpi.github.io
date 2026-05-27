@@ -35,15 +35,51 @@ L’obiettivo è diffondere la cultura Linux e del software libero, aiutando ute
 
 <div id="sezioni" class="section-container">
     <div class="section-header">
-        <span class="section-tag">Esplora</span>
-        <h2 class="section-title">Le Nostre Sezioni</h2>
+        <span class="section-tag">Esplora l'ecosistema</span>
+        <h2 class="section-title">Domina il tuo Hardware</h2>
     </div>
 
-{{< cards >}}
-  {{< card link="/docs/proxmox" title="Proxmox HomeLab" icon="server" subtitle="Ottimizzazione e gestione nodi per il tuo cloud privato." >}}
-  {{< card link="/docs/raspberry-pi" title="Mondo Raspberry" icon="terminal" subtitle="Progetti hardware, script e soluzioni IoT creative." >}}
-  {{< card link="/docs/linux" title="Cultura Linux" icon="book-open" subtitle="Guide, recensioni distro e filosofia del software libero." >}}
-{{< /cards >}}
+<div class="tuxpi-cards-grid">
+        <!-- CARD 1: PROXMOX -->
+        <a href="/docs/proxmox" class="tux-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800');"></div>
+            <div class="card-content">
+                <div class="card-icon">🖥️</div>
+                <h3>Proxmox Lab</h3>
+                <p>Virtualizzazione estrema. Gestisci i tuoi nodi e crea un datacenter domestico professionale.</p>
+            </div>
+        </a>
+
+<!-- CARD 2: RASPBERRY PI -->
+<a href="/docs/raspberry-pi" class="tux-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1629739945244-c7821487b257?q=80&w=800');"></div>
+            <div class="card-content">
+                <div class="card-icon">🥧</div>
+                <h3>Mondo Raspberry</h3>
+                <p>Dallo sviluppo IoT ai server a basso consumo. Progetti pratici per la single-board più amata.</p>
+            </div>
+        </a>
+
+        <!-- CARD 3: DOCKER & CLOUD (LA NUOVA SEZIONE) -->
+<a href="/docs/self-hosting" class="tux-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1605745341112-85968b193ef5?q=80&w=800');"></div>
+            <div class="card-content">
+                <div class="card-icon">🐳</div>
+                <h3>Self-Hosting</h3>
+                <p>Docker, Portainer e servizi Cloud privati. Prendi il controllo dei tuoi dati senza dipendere da terzi.</p>
+            </div>
+        </a>
+        <!-- CARD 4: CULTURA LINUX -->
+        <a href="/docs/linux" class="tux-card">
+            <div class="card-bg" style="background-image: url('https://raw.githubusercontent.com/Tux-Pi/tuxpi.github.io/main/images/linux-opensource.png');"></div>
+            <div class="card-content">
+                <div class="card-icon">🐧</div>
+                <h3>Cultura Linux</h3>
+                <p>Filosofia Open Source, guide al terminale e recensioni delle migliori distribuzioni del pinguino.</p>
+            </div>
+        </a>
+    </div>
+</div>
 
 </div>
 
@@ -221,5 +257,96 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 .hx-card:hover::before {
     transform: translateX(100%);
+}
+
+/* GRIGLIA A 4 COLONNE */
+.tuxpi-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+    padding: 0 10px;
+}
+
+/* LA CARD INDIVIDUALE */
+.tux-card {
+    position: relative;
+    height: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* L'IMMAGINE DI SFONDO DELLA CARD */
+.card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4) grayscale(0.2); /* Scura di base */
+    transition: all 0.6s ease;
+    z-index: 1;
+}
+
+/* CONTENUTO SOPRA L'IMMAGINE */
+.card-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    transition: all 0.4s ease;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.tux-card h3 {
+    color: #fff !important;
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    margin: 0 0 10px 0 !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.tux-card p {
+    color: #cbd5e1 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    opacity: 0.8;
+    margin: 0 !important;
+}
+
+/* EFFETTI HOVER (QUANDO PASSI IL MOUSE) */
+.tux-card:hover {
+    transform: translateY(-15px);
+    border-color: #3b82f6;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.tux-card:hover .card-bg {
+    filter: brightness(0.6) grayscale(0); /* Si schiarisce e prende colore */
+    transform: scale(1.1); /* Effetto zoom */
+}
+
+.tux-card:hover .card-icon {
+    transform: translateY(0) scale(1.2);
+}
+
+.tux-card:hover .card-content {
+    background: linear-gradient(to top, rgba(59, 130, 246, 0.3) 0%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+    .tuxpi-cards-grid { grid-template-columns: 1fr; }
+    .tux-card { height: 280px; }
 }
 </style>
