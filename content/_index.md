@@ -4,13 +4,11 @@ title: "TuxPi - Home"
 
 <!-- 1. SLIDER GIGANTE A TUTTO SCHERMO -->
 <div class="main-slider-container">
-    
-    <!-- Immagini dello Slider -->
+        <!-- Immagini dello Slider -->
     <div class="slide fade" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070');"></div>
     <div class="slide fade" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070');"></div>
     <div class="slide fade" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000');"></div>
-
-    <!-- Contenuto Sopra lo Slider -->
+ <!-- Contenuto Sopra lo Slider -->
     <div class="slider-overlay-content">
         <div class="hero-badge">PROGETTO OPEN SOURCE</div>
         <h1 class="hero-title">TUX<span>PI</span></h1>
