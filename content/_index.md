@@ -14,7 +14,7 @@
             </div>
             <div class="hero-buttons">
                 <a href="#articoli" class="btn btn-blue">Ultimi Articoli</a>
-                <a href="#sezioni" class="btn btn-outline">Sezioni Tech</a>
+                <a href="#sezioni" class="btn btn-outline">Sezioni</a>
             </div>
         </div>
     </div>
@@ -40,10 +40,12 @@ L’obiettivo è diffondere la cultura Linux e del software libero, aiutando ute
     </div>
 
 {{< cards >}}
-  {{< card link="/docs/proxmox" title="Proxmox Lab" icon="server" subtitle="Ottimizzazione e gestione nodi." >}}
-  {{< card link="/docs/raspberry-pi" title="Mondo Raspberry" icon="terminal" subtitle="Progetti hardware e software." >}}
-  {{< card link="/docs/linux" title="Cultura Linux" icon="book-open" subtitle="Recensioni e tutorial Open Source." >}}
+  {{< card link="/docs/proxmox" title="Proxmox HomeLab" icon="server" subtitle="Ottimizzazione e gestione nodi per il tuo cloud privato." >}}
+  {{< card link="/docs/raspberry-pi" title="Mondo Raspberry" icon="terminal" subtitle="Progetti hardware, script e soluzioni IoT creative." >}}
+  {{< card link="/docs/linux" title="Cultura Linux" icon="book-open" subtitle="Guide, recensioni distro e filosofia del software libero." >}}
 {{< /cards >}}
+
+</div>
 
 </div>
 
@@ -144,4 +146,80 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* NASCONDE ELEMENTI INUTILI */
 .hextra-breadcrumb, .next-link, .prev-link, .mt-16, footer .mx-auto { display: none !important; }
+
+/* --- TRASFORMAZIONE CARD TUXPI --- */
+
+/* 1. Il contenitore delle card */
+.hextra-cards {
+    gap: 2rem !important;
+    margin-top: 2rem !important;
+}
+
+/* 2. Stile della singola Card */
+.hx-card {
+    background: rgba(255, 255, 255, 0.03) !important; /* Effetto vetro scuro */
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 1.5rem !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. Effetto Hover (Elevazione e Luce) */
+.hx-card:hover {
+    transform: translateY(-12px) scale(1.02) !important;
+    background: rgba(59, 130, 246, 0.08) !important; /* Bagliore blu soft */
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* 4. Animazione Icona */
+.hx-card svg {
+    color: #3b82f6 !important; /* Colore blu TuxPi */
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    transition: transform 0.5s ease !important;
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
+}
+
+.hx-card:hover svg {
+    transform: rotate(-10deg) scale(1.2) !important;
+    color: #60a5fa !important;
+}
+
+/* 5. Titolo e Sottotitolo */
+.hx-card h3 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-top: 1rem !important;
+    color: white !important;
+    letter-spacing: -0.5px;
+}
+
+.hx-card p {
+    color: #94a3b8 !important;
+    line-height: 1.5 !important;
+    margin-top: 0.5rem !important;
+    font-size: 0.95rem !important;
+}
+
+/* 6. Decorazione extra: linea luminosa in alto al passaggio del mouse */
+.hx-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.hx-card:hover::before {
+    transform: translateX(100%);
+}
 </style>
