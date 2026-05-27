@@ -1,47 +1,58 @@
 ---
-title: TuxPi - Il mondo Linux nelle tue mani
+title: "TuxPi: Linux, Raspberry Pi & Proxmox"
 ---
 
-<div class="relative preserve-3d h-[500px] w-full mb-12 rounded-xl overflow-hidden shadow-2xl">
-  <!-- Immagine di Sfondo con Overlay scuro -->
-  <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('/images/hero-bg.jpg');">
-    <div class="absolute inset-0 bg-black/60"></div>
+<!-- SEZIONE HERO CON IMMAGINE E TESTO ANIMATO -->
+<div class="relative w-full h-[500px] flex items-center justify-center overflow-hidden rounded-2xl shadow-xl mb-12">
+  
+  <!-- Immagine di sfondo tech -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070" 
+         class="w-full h-full object-cover brightness-[0.4]" 
+         alt="TuxPi Tech Background">
   </div>
 
-  <!-- Contenuto dello Slider/Hero -->
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+  <!-- Contenuto Testuale -->
+  <div class="relative z-10 text-center px-6">
+    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
       Progetto <span class="text-blue-400">TuxPi</span>
     </h1>
     
-    <!-- Testo che si muove (Typing Effect) -->
-    <p class="text-xl md:text-2xl text-gray-200 font-mono">
-      > <span class="typing-text"></span><span class="cursor">|</span>
-    </p>
+    <!-- Testo Animato (Typing Effect) -->
+    <div class="h-10">
+      <p class="text-xl md:text-3xl font-mono text-gray-200 inline-block">
+        > <span class="typing-animation"></span><span class="cursor-blink">|</span>
+      </p>
+    </div>
 
-    <div class="mt-8 flex gap-4">
-      <a href="/blog/" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transition">Esplora Articoli</a>
-      <a href="#sezioni" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-lg font-bold transition">Scopri Sezioni</a>
+    <div class="mt-10 flex justify-center gap-4">
+      <a href="/blog/" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105">
+        Leggi il Blog
+      </a>
+      <a href="/docs/" class="bg-transparent border-2 border-white/50 hover:border-white text-white font-bold py-3 px-8 rounded-full transition-all">
+        Documentazione
+      </a>
     </div>
   </div>
 </div>
 
 <style>
-/* Animazione Typing */
-.typing-text::after {
-  content: "Linux per tutti";
-  animation: typing 8s infinite;
+/* Animazione della scritta che cambia */
+.typing-animation::after {
+  content: "";
+  animation: changeText 10s infinite;
 }
 
-@keyframes typing {
-  0%, 20% { content: "Linux per tutti"; }
-  25%, 45% { content: "Raspberry Pi & Proxmox"; }
-  50%, 70% { content: "Open Source Power"; }
-  75%, 95% { content: "Benvenuti su TuxPi"; }
+@keyframes changeText {
+  0%, 25% { content: "Linux per tutti"; }
+  26%, 50% { content: "Raspberry Pi & Homelab"; }
+  51%, 75% { content: "Proxmox Virtualizzazione"; }
+  76%, 100% { content: "Software Libero"; }
 }
 
-.cursor {
-  animation: blink 1s infinite;
+/* Cursore che lampeggia */
+.cursor-blink {
+  animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
@@ -49,11 +60,20 @@ title: TuxPi - Il mondo Linux nelle tue mani
 }
 </style>
 
-<div id="sezioni"></div>
+---
 
-## Esplora le risorse
+## 📂 Esplora il progetto
+Scopri le nostre guide dettagliate e gli ultimi aggiornamenti dal mondo TuxPi.
+
 {{< cards >}}
-  {{< card link="/blog/" title="Leggi gli Articoli" icon="book-open" >}}
-  {{< card link="/docs/proxmox/" title="Proxmox Homelab" icon="cog" >}}
-  {{< card link="/docs/raspberry-pi/" title="Mondo Raspberry" icon="terminal" >}}
+  {{< card link="/blog/" title="Ultimi Articoli" icon="book-open" subtitle="Guide, recensioni e news su Linux." >}}
+  {{< card link="/docs/proxmox/" title="Proxmox Guide" icon="cog" subtitle="Configura il tuo server domestico." >}}
+  {{< card link="/docs/raspberry-pi/" title="Mondo Raspberry" icon="terminal" subtitle="Progetti creativi con la single board." >}}
 {{< /cards >}}
+
+---
+
+### 🚀 Perché Linux?
+L'obiettivo di **TuxPi** è mostrare come il software libero possa ridare vita a vecchi PC (addio Windows 10!) e offrire un ambiente di sviluppo sicuro e potente. 
+
+[Scopri di più sulla nostra missione →](/chi-sono/)
