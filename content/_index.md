@@ -60,7 +60,6 @@ L’obiettivo è diffondere la cultura Linux e del software libero, aiutando ute
             </div>
         </a>
 
-        <!-- CARD 3: DOCKER & CLOUD (LA NUOVA SEZIONE) -->
 <a href="/docs/self-hosting" class="tux-card">
             <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1605745341112-85968b193ef5?q=80&w=800');"></div>
             <div class="card-content">
