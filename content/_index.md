@@ -1,20 +1,18 @@
----
-title: "TuxPi - Home"
----
-
-<div class="main-slider-container">
-    <!-- 1. BACKGROUND SLIDER (Immagini che cambiano) -->
-    <div class="slideshow">
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070');"></div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070');"></div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000');"></div>
+<div class="tuxpi-hero-container">
+    <!-- BACKGROUND SLIDER -->
+    <div id="hero-slider" class="hero-slider">
+        <!-- Le immagini vengono gestite via CSS/JS sotto -->
+        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070');"></div>
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070');"></div>
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000');"></div>
     </div>
-<!-- 2. CONTENUTO CENTRALE -->
+<!-- CONTENUTO -->
     <div class="hero-overlay">
         <div class="hero-content">
+            <div class="hero-badge">PROGETTO TUXPI</div>
             <h1 class="hero-title">TUX<span>PI</span></h1>
-            <!-- CONTENITORE TESTO TYPING -->
-            <div class="typing-wrapper">
+            
+<div class="typing-container">
                 <span class="prefix">> </span>
                 <span id="typing-text"></span>
                 <span class="cursor">_</span>
@@ -29,104 +27,112 @@ title: "TuxPi - Home"
 </div>
 
 <script>
-// CONFIGURAZIONE TYPING EFFECT
-const textElement = document.getElementById('typing-text');
+// CONFIGURAZIONE SINCRONIZZATA
 const phrases = [
     "Linux & Raspberry Pi",
     "Proxmox Homelab",
-    "Virtualizzazione & Libertà",
-    "Addio Windows 10"
+    "Virtualizzazione & Libertà"
 ];
 
-let phraseIndex = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const textElement = document.getElementById('typing-text');
+
+let currentIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 let typeSpeed = 100;
 
-function type() {
-    const currentPhrase = phrases[phraseIndex];
-    
-    if (isDeleting) {
-        // Cancella testo
-        textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        typeSpeed = 50; // Più veloce a cancellare
-    } else {
-        // Scrive testo
-        textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        typeSpeed = 150; // Velocità normale scrittura
-    }
-
-    // Logica di pausa e inversione
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        isDeleting = true;
-        typeSpeed = 2000; // Pausa quando ha finito di scrivere
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typeSpeed = 500; // Pausa prima di iniziare la nuova frase
-    }
-
-    setTimeout(type, typeSpeed);
+function updateSlides(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) slide.classList.add('active');
+    });
 }
 
-// Avvia l'effetto al caricamento
-document.addEventListener('DOMContentLoaded', type);
+function typeEffect() {
+    const currentPhrase = phrases[currentIndex];
+    
+    if (isDeleting) {
+        // CANCELLAZIONE
+        textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 40; 
+    } else {
+        // SCRITTURA
+        textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 120;
+    }
+
+    // LOGICA DI CAMBIO SINCRONIZZATO
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        // Ha finito di scrivere: Aspetta 3 secondi prima di cancellare
+        isDeleting = true;
+        typeSpeed = 3000; 
+    } else if (isDeleting && charIndex === 0) {
+        // Ha finito di cancellare: CAMBIA IMMAGINE ORA
+        isDeleting = false;
+        currentIndex = (currentIndex + 1) % phrases.length;
+        updateSlides(currentIndex); // <--- Sincronizzazione immagine
+        typeSpeed = 500; 
+    }
+
+    setTimeout(typeEffect, typeSpeed);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    typeEffect();
+});
 </script>
 
 <style>
-/* FULL WIDTH BREAKOUT */
-.main-slider-container {
+/* 1. RESET E BREAKOUT MARGINI */
+.tuxpi-hero-container {
     position: relative;
     width: 100vw;
-    height: 100vh; /* Copre quasi tutto lo schermo */
+    height: 95vh;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: -3.5rem; /* Compensa la navbar di Hextra */
-    background: #000;
+    margin-top: -3.5rem; /* Compensa navbar */
     overflow: hidden;
+    background: #000;
 }
 
-/* SLIDESHOW CSS */
-.slideshow {
+/* 2. ANIMAZIONE IMMAGINI (Ken Burns + Fade) */
+.hero-slider {
     position: absolute;
     inset: 0;
     z-index: 1;
 }
 
-.slide {
+.hero-slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: transform 6s ease-in-out; /* Effetto zoom lento */
-    animation: imageFade 16s infinite;
+    transform: scale(1.1); /* Parte leggermente zoomato */
+    transition: opacity 1.5s ease-in-out, transform 6s ease-in-out;
 }
 
-/* Sincronizzazione 4 immagini (4s l'una) */
-.slide:nth-child(1) { animation-delay: 0s; }
-.slide:nth-child(2) { animation-delay: 4s; }
-.slide:nth-child(3) { animation-delay: 8s; }
-/* Se ne aggiungi una quarta: .slide:nth-child(4) { animation-delay: 12s; } */
-
-@keyframes imageFade {
-    0%, 25% { opacity: 1; transform: scale(1); }
-    30%, 100% { opacity: 0; transform: scale(1.1); }
+/* Quando la slide è attiva, diventa visibile e fa lo zoom inverso */
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
 }
 
-/* OVERLAY E TESTO */
+/* 3. TESTO E OVERLAY */
 .hero-overlay {
-    position: absolute;
-    inset: 0;
+    position: relative;
     z-index: 10;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 80%);
+    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.5) 90%);
 }
 
 .hero-content {
@@ -134,56 +140,68 @@ document.addEventListener('DOMContentLoaded', type);
     color: white;
 }
 
+.hero-badge {
+    color: #3b82f6;
+    letter-spacing: 5px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
 .hero-title {
-    font-size: clamp(5rem, 20vw, 13rem) !important;
+    font-size: clamp(5rem, 20vw, 12rem) !important;
     font-weight: 900 !important;
+    line-height: 0.8;
     letter-spacing: -8px;
     margin: 0 !important;
-    line-height: 0.8;
 }
 
 .hero-title span { color: #3b82f6; }
 
-/* TYPING WRAPPER */
-.typing-wrapper {
+.typing-container {
     margin-top: 2rem;
+    height: 3.5rem;
     font-family: 'Courier New', monospace;
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    height: 4rem;
-    color: #e2e8f0;
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    color: #cbd5e1;
 }
 
 .cursor {
-    color: #3b82f6;
     animation: blink 0.8s infinite;
+    color: #3b82f6;
     font-weight: bold;
 }
 
 @keyframes blink { 50% { opacity: 0; } }
 
-/* BOTTONI */
+/* 4. PULSANTI */
 .hero-buttons {
-    margin-top: 3rem;
+    margin-top: 4rem;
     display: flex;
     gap: 20px;
     justify-content: center;
 }
 
 .btn {
-    padding: 15px 40px;
+    padding: 16px 40px;
     border-radius: 50px;
     font-weight: 800;
     text-decoration: none;
     text-transform: uppercase;
-    transition: 0.3s;
+    transition: 0.4s;
+    font-size: 0.9rem;
 }
 
 .btn-blue { background: #3b82f6; color: white; }
 .btn-outline { border: 2px solid white; color: white; }
-.btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+.btn:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
 
-/* NASCONDE ELEMENTI HEXTRA */
-.hextra-breadcrumb, .next-link, .prev-link, footer, .mt-16 {
+/* 5. PULIZIA TEMA HEXTRA */
+.hextra-breadcrumb, .next-link, .prev-link, .mt-16, footer {
     display: none !important;
 }
 </style>
