@@ -9,7 +9,6 @@
 <!-- CONTENUTO -->
     <div class="hero-overlay">
         <div class="hero-content">
-            <div class="hero-badge">PROGETTO TUXPI</div>
             <h1 class="hero-title">TUX<span>PI</span></h1>
             
 <div class="typing-container">
@@ -25,6 +24,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script>
 // CONFIGURAZIONE SINCRONIZZATA
