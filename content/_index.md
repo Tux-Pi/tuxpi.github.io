@@ -1,171 +1,201 @@
 ---
-title: "TuxPi - Home Page"
+title: "TuxPi - Home"
 ---
 
-<!-- SEZIONE HERO FULL WIDTH (Ignora i margini del tema) -->
-<div class="hero-breakout">
-  <div class="hero-inner">
-    
-    <!-- Immagine di Sfondo con Effetto Parallasse -->
-    <div class="hero-bg"></div>
-    
-    <!-- Overlay Scuro per Leggibilità -->
-    <div class="hero-overlay"></div>
-
-    <!-- Contenuto Centrale -->
-    <div class="hero-content">
-      <div class="hero-badge">Progetto Linux & Open Source</div>
-      <h1 class="hero-title">TUXPI</h1>
-      
-      <div class="hero-subtitle-container">
-        <span class="hero-prefix">> </span>
-        <span class="hero-typing"></span>
-        <span class="hero-cursor">_</span>
-      </div>
-
-      <div class="hero-buttons">
-        <a href="/blog/" class="btn-primary">Esplora Articoli</a>
-        <a href="/docs/proxmox/" class="btn-secondary">Guida Proxmox</a>
-      </div>
+<!-- 1. BLOCCO HERO GIGANTE (Breakout) -->
+<div class="breakout-section hero-section">
+  <div class="hero-content">
+    <div class="glass-box">
+        <span class="badge">🚀 Benvenuti nel futuro Open Source</span>
+        <h1 class="main-title">TUX<span>PI</span></h1>
+        <div class="dynamic-subtitle">> <span class="typing"></span><span class="cursor">_</span></div>
+        <div class="hero-actions">
+            <a href="/blog" class="btn btn-blue">Esplora Articoli</a>
+            <a href="/docs" class="btn btn-outline">Sezioni Tecniche</a>
+        </div>
     </div>
-
   </div>
 </div>
 
+<!-- 2. BLOCCO "PERCHÈ TUXPI?" (Tre colonne chiare) -->
+<div class="info-section">
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="info-icon">🐧</div>
+            <h3>Linux Power</h3>
+            <p>Scopri come passare a Linux e dire addio alle restrizioni di Windows 10/11.</p>
+        </div>
+        <div class="info-card">
+            <div class="info-icon">🥧</div>
+            <h3>Raspberry Pi</h3>
+            <p>Guide passo-passo per trasformare una piccola scheda in un server potente.</p>
+        </div>
+        <div class="info-card">
+            <div class="info-icon">☁️</div>
+            <h3>Virtualizzazione</h3>
+            <p>Domina Proxmox per creare il tuo Cloud privato e sicuro a casa tua.</p>
+        </div>
+    </div>
+</div>
+
+<!-- 3. SEZIONE CONTENUTI PRINCIPALI -->
+<div class="breakout-section categories-section">
+    <div class="category-banner">
+        <div class="category-text">
+            <h2>Proxmox Homelab</h2>
+            <p>Tutto quello che devi sapere per gestire il tuo nodo Proxmox, container LxC e macchine virtuali.</p>
+            <a href="/docs/proxmox" class="link-btn">Vai alla sezione →</a>
+        </div>
+        <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000" alt="Server">
+        </div>
+    </div>
+</div>
+
 <style>
-/* TRUCCO PER ROMPERE I MARGINI DEL TEMA */
-.hero-breakout {
-    position: relative;
+/* --- SETUP STRUTTURA GIGANTE --- */
+:root {
+    --primary-blue: #3b82f6;
+    --dark-bg: #0f172a;
+}
+
+.breakout-section {
     width: 100vw;
+    position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: -2rem; /* Allinea all'inizio del contenuto */
-    margin-bottom: 4rem;
 }
 
-.hero-inner {
-    position: relative;
-    height: 85vh; /* Prende l'85% dell'altezza dello schermo */
-    min-height: 500px;
+/* --- HERO SECTION --- */
+.hero-section {
+    height: 90vh;
+    min-height: 600px;
+    background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070') no-repeat center center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    margin-top: -2rem;
 }
 
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070');
-    background-size: cover;
-    background-position: center;
-    transform: scale(1.1); /* Per un leggero effetto profondità */
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0.8));
-}
-
-.hero-content {
-    position: relative;
-    z-index: 10;
+.glass-box {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 2rem;
     text-align: center;
-    color: white;
-    padding: 0 20px;
-    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.hero-badge {
-    background: #2563eb;
-    color: white;
-    display: inline-block;
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-}
-
-.hero-title {
-    font-size: clamp(4rem, 15vw, 10rem) !important; /* Testo GIGANTE */
+.main-title {
+    font-size: clamp(4rem, 12vw, 8rem) !important;
     font-weight: 900 !important;
-    line-height: 0.8;
+    color: white !important;
     margin: 0 !important;
-    letter-spacing: -5px;
-    color: white;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    line-height: 1;
+    letter-spacing: -4px;
 }
 
-.hero-subtitle-container {
-    margin-top: 1.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: clamp(1.2rem, 4vw, 2.5rem);
-    font-weight: 400;
-    color: #cbd5e1;
+.main-title span { color: var(--primary-blue); }
+
+.dynamic-subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: #94a3b8;
+    margin-top: 1rem;
 }
 
-.hero-typing::after {
+.typing::after {
     content: "";
-    animation: typing-text 12s infinite;
+    animation: type 10s infinite;
 }
 
-@keyframes typing-text {
-    0%, 25% { content: "Il server del Pinguino"; }
-    26%, 50% { content: "Mondo Raspberry Pi"; }
-    51%, 75% { content: "Homelab con Proxmox"; }
-    76%, 100% { content: "Libertà Digitale"; }
+@keyframes type {
+    0%, 25% { content: "Il blog di TuxMaker"; }
+    26%, 50% { content: "Linux & Raspberry Pi"; }
+    51%, 75% { content: "Proxmox & Homelab"; }
+    76%, 100% { content: "Addio Windows 10!"; }
 }
 
-.hero-cursor {
-    animation: blink 0.8s infinite;
-    color: #2563eb;
+/* --- INFO CARDS --- */
+.info-section {
+    padding: 6rem 0;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
 
-.hero-buttons {
-    margin-top: 3rem;
+.info-card {
+    background: #1e293b;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    transition: 0.3s ease;
+    border-bottom: 4px solid transparent;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+}
+
+.info-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+/* --- CATEGORY BANNER --- */
+.categories-section {
+    background: #1e293b;
+    padding: 4rem 0;
+}
+
+.category-banner {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 4rem;
+    padding: 0 2rem;
 }
 
-.btn-primary {
-    background: white;
-    color: black;
-    padding: 15px 35px;
+.category-text h2 { font-size: 3rem !important; color: white !important; margin-bottom: 1rem !important;}
+.category-text p { font-size: 1.2rem; color: #94a3b8; margin-bottom: 2rem; }
+
+.category-image img {
+    border-radius: 2rem;
+    width: 500px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* --- BOTTONI --- */
+.btn {
+    padding: 1rem 2.5rem;
     border-radius: 50px;
     font-weight: 700;
     text-decoration: none;
+    display: inline-block;
     transition: 0.3s;
+    margin: 0.5rem;
 }
-.btn-primary:hover { background: #2563eb; color: white; transform: scale(1.05); }
 
-.btn-secondary {
-    border: 2px solid rgba(255,255,255,0.4);
-    color: white;
-    padding: 15px 35px;
-    border-radius: 50px;
+.btn-blue { background: var(--primary-blue); color: white; }
+.btn-outline { border: 2px solid white; color: white; }
+.btn:hover { opacity: 0.8; transform: scale(1.05); }
+
+.link-btn {
+    color: var(--primary-blue);
     font-weight: 700;
     text-decoration: none;
-    transition: 0.3s;
+    font-size: 1.1rem;
 }
-.btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+@media (max-width: 768px) {
+    .category-banner { flex-direction: column; text-align: center; }
+    .category-image img { width: 100%; }
+}
 </style>
-
----
-
-## 🛠️ Le sezioni principali di TuxPi
-Bentornato su **TuxPi**. Qui trovi tutto ciò che serve per gestire il tuo hardware e i tuoi server Linux.
-
-{{< cards >}}
-  {{< card link="/blog/" title="Blog & News" icon="book-open" subtitle="Approfondimenti settimanali." >}}
-  {{< card link="/docs/proxmox/" title="Proxmox Lab" icon="cog" subtitle="Virtualizzazione estrema." >}}
-  {{< card link="/docs/raspberry-pi/" title="Raspberry Pi" icon="terminal" subtitle="Progetti hardware." >}}
-{{< /cards >}}
