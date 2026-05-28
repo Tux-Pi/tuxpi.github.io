@@ -30,7 +30,7 @@ menu:
       url: "/docs"
       weight: 3
     - name: "Chi Sono"
-      url: "/chi-sono.md"
+      url: "/chi-sono"
       weight: 4
     - name: "Cerca"
       weight: 10
